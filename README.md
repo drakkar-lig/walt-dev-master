@@ -24,7 +24,9 @@ the rest of the script.
 After this, you may find instructions such as:
 * `enable-cross-arch`
 * `docker-preserve-cache`
-This are some of the shell functions implemented defined in the environment.
+* etc.
+
+These are some of the shell functions defined in the environment.
 
 
 Usage
