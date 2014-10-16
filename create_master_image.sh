@@ -21,9 +21,9 @@ ENTRYPOINT ["$ENTRY_POINT"]
 CMD []
 EOF
 
-docker build $DOCKER_BUID_OPTIONS -t "$DEV_MASTER_IMAGE" .
+docker build $DOCKER_BUID_OPTIONS -t "$DOCKER_DEV_MASTER_IMAGE" .
 
-docker run --privileged "$DEV_MASTER_IMAGE" privileged-post-install
-docker-commit-and-remove-last-container "$DEV_MASTER_IMAGE"
+docker run --privileged "$DOCKER_DEV_MASTER_IMAGE" privileged-post-install
+docker-commit-and-remove-last-container "$DOCKER_DEV_MASTER_IMAGE"
 
 rm -rf $TMP_DIR
