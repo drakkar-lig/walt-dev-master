@@ -1,7 +1,18 @@
 walt-dev-master
 ===============
 
-This repository allows to build a docker container called waltplatform/dev-master.
+This repository allows to build 2 docker containers:
+* waltplatform/debian-base
+* waltplatform/dev-master
+
+waltplatform/debian-base 
+------------------------
+This container is a base used for various containers of the WalT project, 
+including waltplatform/dev-master. 
+It includes an up-to-date debian system with a small set of debugging utilities.
+
+waltplatform/dev-master 
+----------------------
 This container allows (a) to avoid lengthy setup on each development machine, and
 (b) to share development configuration and tools with other development repositories.
 
@@ -32,12 +43,12 @@ These are some of the shell functions defined in the environment.
 Usage
 =====
 
-Build the image:
+Build the images:
 ```
 $ make
 ```
 
-Publish on docker hub:
+Publish them on docker hub:
 ```
 $ make publish
 ```
