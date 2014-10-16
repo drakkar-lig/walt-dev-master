@@ -29,6 +29,9 @@ case "$1" in
         cat "$THIS_DIR/config.sh"
         cat "$THIS_DIR/env.sh"
         ;;
+    "conf-get")
+        eval "echo \$$2"
+        ;;
     "bash")     # debugging purpose
         bash -i
         ;;
