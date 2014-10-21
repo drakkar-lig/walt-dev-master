@@ -10,6 +10,11 @@ DOCKER_DEBIAN_BASE_IMAGE="$DOCKER_USER/debian-base"
 DOCKER_DEBIAN_RPI_BUILDER_IMAGE="$DOCKER_USER/rpi-debian-builder"
 DOCKER_DEBIAN_RPI_BASE_IMAGE="$DOCKER_USER/rpi-debian-base"
 DOCKER_DEBIAN_RPI_IMAGE="$DOCKER_USER/rpi-debian"
+DOCKER_RPI_BOOT_BUILDER_IMAGE="$DOCKER_USER/rpi-boot-builder"
+DOCKER_RPI_BOOT_IMAGE="$DOCKER_USER/rpi-boot"
+
+RPI_BOOT_KEXEC_VERSION="2.0.3"
+RPI_BOOT_BUIDROOT_GIT_TAG="2014.08"
 
 DEBIAN_RPI_REPO_URL="http://mirror.switch.ch/ftp/mirror/raspbian/raspbian"
 DEBIAN_RPI_REPO_KEY="http://mirror.switch.ch/ftp/mirror/raspbian/raspbian.public.key"
