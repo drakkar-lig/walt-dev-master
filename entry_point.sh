@@ -6,13 +6,15 @@ source $THIS_DIR/config.sh
 privileged-post-install()
 {
     apt-get install -y qemu-user-static
+    umount /proc/sys/fs/binfmt_misc
 }
 
 enable-cross-arch()
 {
-    # this will mount binfmt_misc if not done yet,
+    # this will temporarily remount binfmt_misc
     # and configure binary interpreters including qemu-arm-static.
     DEBIAN_FRONTEND=noninteractive dpkg-reconfigure qemu-user-static
+    umount /proc/sys/fs/binfmt_misc
 }
 
 case "$1" in
@@ -28,9 +30,17 @@ case "$1" in
     "env")
         cat "$THIS_DIR/config.sh"
         cat "$THIS_DIR/env.sh"
+        cat "$THIS_DIR/runp/docker_privileged_build.sh"
+        echo "set +ex"  # disable any error or debug env config
         ;;
     "conf-get")
+        # to be used in Makefile, e.g.
+        # DOCKER_SERVER_IMAGE=$(shell docker run waltplatform/dev-master \
+        #                    conf-get DOCKER_SERVER_IMAGE)
         eval "echo \$$2"
+        ;;
+    "runp-tools-archive")
+        cd "$THIS_DIR" && tar cfz - runp
         ;;
     "bash")     # debugging purpose
         bash -i

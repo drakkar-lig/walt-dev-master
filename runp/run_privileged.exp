@@ -1,0 +1,27 @@
+#!/usr/bin/env expect
+
+set image [lindex $argv 0]
+set layer_id [lindex $argv 1]
+set curr_dir [file dirname $argv0]
+set timeout -1
+set return_value 0
+
+spawn runp/run_privileged_docker.sh "$image" "$layer_id"
+
+expect {
+    "END_FAILED"    {
+        set return_value = 1
+    }
+    "END_PRIVILEGED_CMDLINE" {
+        system $curr_dir/push_diff_file.sh
+        send "Done\n"
+        exp_continue
+    }
+    "ARCHIVE_READY"    {
+    }
+    eof {
+        wait
+        exit $return_value
+    }
+}
+

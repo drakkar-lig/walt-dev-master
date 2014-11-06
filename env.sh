@@ -1,5 +1,18 @@
 #!/bin/bash
 
+docker-remove-last-container()
+{
+	CID=$(docker ps -l -q) # last container
+    # be tolerant, it may still be running for 
+    # a few milliseconds
+    while [ "$(docker ps -q $CID)" != "" ]
+    do
+        echo "waiting for the container to stop..."
+        sleep 1
+    done
+    docker rm $CID
+}
+
 docker-commit-and-remove-last-container()
 {
 	image="$1"
@@ -111,12 +124,25 @@ docker-preserve-cache()
             # cached file on the new one.
             touch -r "$cache_file" "$file"
             return # we are all set
+        else
+            ls -l "$cache_file" "$file"
+            cmp -s "$file" "$cache_file"
+            echo $?
         fi
     fi
 
     # prepare for next time
     cp "$file" "$cache_file"
     touch -r "$file" "$cache_file"
+}
+
+docker-remove-image()
+{
+    img=$(docker images -q waltplatform/$1)
+    if test ! -z "$img"
+    then 
+        docker rmi $img
+    fi
 }
 
 enable-cross-arch()

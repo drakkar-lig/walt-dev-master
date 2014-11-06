@@ -12,6 +12,9 @@ DOCKER_DEBIAN_RPI_BASE_IMAGE="$DOCKER_USER/rpi-debian-base"
 DOCKER_DEBIAN_RPI_IMAGE="$DOCKER_USER/rpi-debian"
 DOCKER_RPI_BOOT_BUILDER_IMAGE="$DOCKER_USER/rpi-boot-builder"
 DOCKER_RPI_BOOT_IMAGE="$DOCKER_USER/rpi-boot"
+DOCKER_SERVER_BUILDER_IMAGE="$DOCKER_USER/server-builder"
+DOCKER_SERVER_BASE_FS_IMAGE="$DOCKER_USER/server-base-fs"
+DOCKER_SERVER_FS_IMAGE="$DOCKER_USER/server-fs"
 
 RPI_BOOT_KEXEC_VERSION="2.0.3"
 RPI_BOOT_BUIDROOT_GIT_TAG="2014.08"
@@ -31,3 +34,5 @@ RPI_USER="pi"
 RPI_USER_PASSWORD="raspberry"
 
 #DEBIAN_RPI_ADDITIONAL_PACKAGES="ssh,sudo,module-init-tools,build-essential,usbutils,python-pip,python-dev,udev,libusb-1.0-0-dev,libtool,automake,lldpd,ntp,vim,texinfo,iputils-ping,python-serial"
+
+SERVER_BASE_ISO_URL="http://ch.releases.ubuntu.com/14.04.1/ubuntu-14.04.1-desktop-amd64.iso"
