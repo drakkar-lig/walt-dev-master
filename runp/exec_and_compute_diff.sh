@@ -54,10 +54,10 @@ echo $layer_id > layer_id_file
 # - a file containing the files and dirs that should be removed
 filtered_diff_files_and_directories "^D" > runp_removed
 # - the file tree of files and directories that where changed or added
-{ 
-    filtered_diff_directories "^A"
-    filtered_diff_files "^[AC]"
-} | xargs tar cfz /runp_work/out/diff_archive.tar.gz layer_id_file runp_removed
+tar cfz /runp_work/out/diff_archive.tar.gz layer_id_file runp_removed \
+	$(
+	    filtered_diff_directories "^A"
+	    filtered_diff_files "^[AC]")
 
 # note: we consider that "changed" directories are directories where some
 # files were added or deleted, so we ignore them (since we explicitely
