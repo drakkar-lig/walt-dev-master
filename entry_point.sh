@@ -5,7 +5,7 @@ source $THIS_DIR/config.sh
 
 privileged-post-install()
 {
-    apt-get install -y qemu-user-static
+    apt-get update && apt-get install -y qemu-user-static
     umount /proc/sys/fs/binfmt_misc
 }
 
