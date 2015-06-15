@@ -5,7 +5,7 @@ docker-remove-last-container()
 	CID=$(docker ps -l -q) # last container
     # be tolerant, it may still be running for 
     # a few milliseconds
-    while [ "$(docker ps -q $CID)" != "" ]
+    while [ "$(docker ps -q | grep -w $CID)" != "" ]
     do
         echo "waiting for the container to stop..."
         sleep 1
