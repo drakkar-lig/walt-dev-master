@@ -60,8 +60,7 @@ DEBIAN_RPI_FIRMWARE_VERSION="09c0f5fc8cd9701f01e8e403c398699e1b1a1eb6"
 HOST_FS_PATH="/host_fs"
 RPI_FS_PATH="/rpi_fs"
 
-DEBIAN_RPI_ADDITIONAL_PACKAGES="ssh,sudo,module-init-tools,usbutils,python-pip,udev,lldpd,ntp,vim,texinfo,iputils-ping,python-serial"
-DEBIAN_RPI_BACKPORT_PACKAGES="python-msgpack python-zmq"
+DEBIAN_RPI_ADDITIONAL_PACKAGES="ssh,sudo,module-init-tools,usbutils,python-pip,udev,lldpd,ntp,vim,texinfo,iputils-ping,python-serial,ntpdate"
 
 RPI_USER="pi"
 RPI_USER_PASSWORD="raspberry"
