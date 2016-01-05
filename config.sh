@@ -19,8 +19,8 @@ DEBIAN_SERVER_REPO_URL="http://ftp.ch.debian.org/debian"
 DEBIAN_SERVER_REPO_VERSION="jessie"
 DEBIAN_SERVER_REPO_SECTIONS="main non-free"
 
-RPI_BOOT_KEXEC_VERSION="2.0.3"
-RPI_BOOT_BUIDROOT_GIT_TAG="2014.08"
+RPI_BOOT_KEXEC_VERSION="2.0.9"
+RPI_BOOT_BUIDROOT_GIT_TAG="2015.11.1"
 
 DEBIAN_RPI_REPO_URL="http://mirror.switch.ch/ftp/mirror/raspbian/raspbian"
 DEBIAN_RPI_REPO_KEY="http://mirror.switch.ch/ftp/mirror/raspbian/raspbian.public.key"
