@@ -106,6 +106,22 @@ docker-clean()
     fi
 }
 
+agnostic-compare()
+{   # works for files and directories
+    diff -rq $1 $2 >/dev/null
+}
+
+copy_timestamps()
+{
+    src_dir=$(dirname $1)
+    dst_dir=$(dirname $2)
+    cd $src_dir
+    find "$(basename $1)" | while read f
+    do
+        touch -r $f $dst_dir/$f
+    done
+}
+
 docker-preserve-cache()
 {
     file="$1"
@@ -114,26 +130,21 @@ docker-preserve-cache()
     cache_file="$cache_dir/$(basename "$file")"
     mkdir -p "$cache_dir"
 
-    if [ -f "$cache_file" ]
+    if [ -e "$cache_file" ]
     then
-        if cmp -s "$file" "$cache_file"
+        if agnostic-compare "$file" "$cache_file"
         then 
             # file same as the one in cache
             # let docker use its cache by
-            # restoring the timestamps of the 
-            # cached file on the new one.
-            touch -r "$cache_file" "$file"
+            # restoring timestamps
+            copy_timestamps "$cache_file" "$file"
             return # we are all set
-        else
-            ls -l "$cache_file" "$file"
-            cmp -s "$file" "$cache_file"
-            echo $?
         fi
     fi
 
     # prepare for next time
-    cp "$file" "$cache_file"
-    touch -r "$file" "$cache_file"
+    rm -rf "$cache_file"
+    cp -rp "$file" "$cache_file"
 }
 
 docker-remove-image()
