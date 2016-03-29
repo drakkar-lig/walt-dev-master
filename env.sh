@@ -120,6 +120,7 @@ copy_timestamps()
     do
         touch -r $f $dst_dir/$f
     done
+    cd -
 }
 
 docker-preserve-cache()
