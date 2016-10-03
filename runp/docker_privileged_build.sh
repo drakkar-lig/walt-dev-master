@@ -137,7 +137,7 @@ docker-privileged-build()
 $runp_cmdline
 EOF
                 chmod +x runp_work/in/runp_cmdline.sh
-                runp/run_privileged.exp "$image" "$layer_id"
+                sudo runp/run_privileged.exp "$image" "$layer_id"
                 result=$? 
                 docker-remove-last-container
                 if [ $result -ne 0 ]
