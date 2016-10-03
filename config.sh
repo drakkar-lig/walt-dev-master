@@ -1,6 +1,5 @@
 #!/bin/bash
 DOCKER_IMAGE_MAINTAINER="Etienne Duble <etienne.duble@imag.fr>"
-DOCKER_USER="waltplatform"
 
 DEBIAN_VERSION="jessie"
 DEBIAN_ARCHIVE_GPG_KEY="8B48AD6246925553"
@@ -21,14 +20,10 @@ DEBIAN_SERVER_REPO_VERSION="jessie"
 DEBIAN_SERVER_REPO_SECTIONS="main non-free"
 
 DEBIAN_RPI_REPO_URL="http://mirror.switch.ch/ftp/mirror/raspbian/raspbian"
-DEBIAN_RPI_REPO_KEY="http://mirror.switch.ch/ftp/mirror/raspbian/raspbian.public.key"
 DEBIAN_RPI_REPO_VERSION="jessie"
 DEBIAN_RPI_REPO_SECTIONS="main contrib non-free rpi"
-DEBIAN_RPI_KERNEL_REPO="git://github.com/raspberrypi/linux.git"
-DEBIAN_RPI_KERNEL_BRANCH_NAME="rpi-4.4.y"
-DEBIAN_RPI_KERNEL_COMMIT="5a570ebd5856ec520f7d09f208b2278bb754a554"
 
-# kernel upgrade notes:
+# manual kernel upgrade notes:
 # we can retrieve raspbian's running kernel config
 # by issuing
 # $ zcat /proc/config.gz > /raspbian_config
@@ -46,12 +41,4 @@ SVN_RPI_BOOT_FILES="https://github.com/raspberrypi/firmware/tags/1.20160620/boot
 
 INSTALL_UBOOT_SOURCE=" cd /opt && wget -q $UBOOT_ARCHIVE_URL && tar xfj u-boot* && \
                 rm u-boot*.bz2 && mv u-boot* u-boot"
-
-HOST_FS_PATH="/host_fs"
-RPI_FS_PATH="/rpi_fs"
-
-DEBIAN_RPI_ADDITIONAL_PACKAGES="ssh,sudo,module-init-tools,usbutils,python-pip,udev,lldpd,ntp,vim,texinfo,iputils-ping,python-serial,ntpdate"
-
-RPI_USER="pi"
-RPI_USER_PASSWORD="raspberry"
 

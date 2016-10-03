@@ -49,16 +49,6 @@ docker-copy-to-image()
     docker-commit-and-remove-last-container $image
 }
 
-get-docker-bin-mapping-opts()
-{
-    docker_bin=$(which docker)
-    volumes=""" $docker_bin
-                /var/run/docker.sock
-                $(ldd $docker_bin | grep -o "/.*lib.*/.* ") """
-    awk_command=$(printf '{print "-v "$1":%s"$1}' "$HOST_FS_PATH")
-    echo "$volumes" | awk "$awk_command"
-}
-
 dev-master()
 {
     docker_opts="--privileged -i"
