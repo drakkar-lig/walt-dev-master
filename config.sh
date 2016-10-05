@@ -42,4 +42,5 @@ SVN_RPI_BOOT_FILES="https://github.com/raspberrypi/firmware/tags/1.20160620/boot
 
 INSTALL_UBOOT_SOURCE=" cd /opt && wget -q $UBOOT_ARCHIVE_URL && tar xfj u-boot* && \
                 rm u-boot*.bz2 && mv u-boot* u-boot"
+ALL_RPI_TYPES="rpi-b rpi-b-plus rpi-2-b rpi-3-b"
 
